@@ -56,7 +56,7 @@ if __name__ == "__main__":
         name="ailia",
         scripts=scripts,
         version="1.4.0.0",
-        description="ailia SDK",
+        description="ailia SDK Beta Channel",
         long_description=long_description,
         long_description_content_type="text/markdown",
         author="ax Inc.",
