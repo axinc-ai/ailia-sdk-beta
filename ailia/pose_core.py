@@ -19,11 +19,11 @@ else:
     is_arm = "arm" in platform.machine() or platform.machine() == "aarch64"
     if is_arm:
         if platform.architecture()[0] == "32bit":
-            dll_platform = "raspberrypi"
+            dll_platform = "linux/armeabi-v7a"
         else:
-            dll_platform = "jetson"
+            dll_platform = "linux/arm64-v8a"
     else:
-        dll_platform = "linux"
+        dll_platform = "linux/x64"
     dll_name = "libailia_pose_estimate.so"
     load_fn = ctypes.CDLL
 

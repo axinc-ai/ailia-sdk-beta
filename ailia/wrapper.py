@@ -237,9 +237,9 @@ class Net:
             enable layer fusion optimization.
         """
         # license check
-        if not("perpetual_license" in get_version()):
+        if "time_license" in get_version():
             check_and_download_license()
-        
+
         # create
         self.__net = ctypes.c_void_p(None)
         code = core.dll.ailiaCreate(ctypes.byref(self.__net), ctypes.c_int(env_id), ctypes.c_int(num_thread))

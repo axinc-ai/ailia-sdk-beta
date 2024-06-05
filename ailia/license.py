@@ -61,12 +61,21 @@ def _display_warning():
     global display_license_warning
     if not display_license_warning:
         return
-    locales = locale.getdefaultlocale()
+    if sys.version_info.major <= 3 and sys.version_info.minor <= 10:
+        locales = locale.getdefaultlocale()
+    else:
+        has_lc_messages = hasattr(locale, "LC_MESSAGES")
+        if has_lc_messages:
+            locales = locale.getlocale(category=locale.LC_MESSAGES)
+        if not has_lc_messages or None in locales:
+            locales = locale.getlocale(category=locale.LC_CTYPE)
     lang = "en"
     for l in locales:
-        if "ja" in l:
+        if l is None:
+            continue
+        if "Japanese" in l or "ja" in l:
             lang = "ja"
-        if "zh" in l:
+        if "Chinese" in l or "zh" in l:
             lang = "zh"
     if lang == "ja":
         logger.info("ailiaへようこそ。ailia SDKは商用ライブラリです。特定の条件下では、無償使用いただけますが、原則として有償ソフトウェアです。詳細は https://ailia.ai/license/ を参照してください。")
