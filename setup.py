@@ -28,11 +28,11 @@ def find_libraries():
             dll_type = ".dylib"
         else:
             if platform == "linux_armv7l":
-                dll_platform = "raspberrypi"
+                dll_platform = "linux/armeabi-v7a"
             elif platform == "linux_aarch64":
-                dll_platform = "jetson"
+                dll_platform = "linux/arm64-v8a"
             else:
-                dll_platform = "linux"
+                dll_platform = "linux/x64"
             dll_type = ".so"
 
         dll_path = "./ailia/" + dll_platform + "/"
@@ -56,7 +56,7 @@ if __name__ == "__main__":
         name="ailia",
         scripts=scripts,
         version="1.4.0.0",
-        description="ailia SDK Beta Channel",
+        description="ailia SDK",
         long_description=long_description,
         long_description_content_type="text/markdown",
         author="ax Inc.",
